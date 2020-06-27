@@ -264,6 +264,10 @@ Deploy `dmg` on macOS, for example:
 
 ![](images/5_my_app_dmg.png)
 
+Double click `dmg` and install:
+
+![](images/5_my_app_dmg_open.png)
+
 #### `export CSC_IDENTITY_AUTO_DISCOVERY=false` to avoid the following `ERROR`
 
 ```bash
