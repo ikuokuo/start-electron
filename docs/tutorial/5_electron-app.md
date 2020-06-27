@@ -160,6 +160,62 @@ ERROR in /Users/John/Codes/ikuokuo/start-electron/my-app/src/plugins/vuetify.ts(
     5 |
 ```
 
+### Electron
+
+* Electron: https://github.com/electron/electron
+* Vue CLI Plugin Electron Builder: https://github.com/nklayman/vue-cli-plugin-electron-builder
+
+```bash
+yarn add @types/node@12 --dev
+```
+
+```bash
+cd my-app
+vue add electron-builder
+```
+
+My setup:
+
+```bash
+? Choose Electron Version ^9.0.0
+```
+
+Edit `src/router/index.ts`:
+
+```ts
+...
+const router = new VueRouter({
+-  mode: "history",
++  mode: process.env.IS_ELECTRON ? "hash" : "history",
+  base: process.env.BASE_URL,
+  routes
+});
+
+export default router;
+```
+
+Start the app:
+
+```bash
+yarn electron:serve
+```
+
+![](images/5_my_app_electron.png)
+
+#### `yarn add @types/node@12 --dev` to fix the following `ERROR`
+
+```bash
+ERROR in /Users/John/Codes/ikuokuo/start-electron/my-app/node_modules/electron/electron.d.ts(1659,31):
+1659:31 Cannot extend an interface 'NodeJS.EventEmitter'. Did you mean 'implements'?
+...
+```
+
+#### Edit `src/router/index.ts` to fix the following `WARN`
+
+```bash
+ WARN  It is detected that you are using Vue Router. If you are using history mode, you must push the default route when the root component is loaded. Learn more at https://goo.gl/GM1xZG .
+```
+
 ## References
 
 * [electron-app](https://github.com/bromix/vue-examples/tree/master/electron-app)
