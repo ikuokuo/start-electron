@@ -102,6 +102,64 @@ Open `http://localhost:8080/` in your browser:
 
 ![](images/5_my_app.png)
 
+## Optimize the App
+
+### Vuetify
+
+GitHub: https://github.com/vuetifyjs/vuetify
+
+```bash
+cd my-app
+vue add vuetify
+```
+
+My setup:
+
+```bash
+? Choose a preset: Default (recommended)
+```
+
+Edit `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    ...
+    "types": [
+-      "webpack-env"
++      "webpack-env",
++      "vuetify"
+    ],
+    ...
+  },
+  ...
+}
+```
+
+Start the app:
+
+```bash
+yarn serve
+```
+
+Open `http://localhost:8080/` in your browser:
+
+![](images/5_my_app_vuetify.png)
+
+#### Edit `tsconfig.json` to fix the following `ERROR`
+
+```bash
+ERROR in /Users/John/Codes/ikuokuo/start-electron/my-app/src/plugins/vuetify.ts(2,21):
+2:21 Could not find a declaration file for module 'vuetify/lib'. '/Users/John/Codes/ikuokuo/start-electron/my-app/node_modules/vuetify/lib/index.js' implicitly has an 'any' type.
+  Try `npm install @types/vuetify` if it exists or add a new declaration (.d.ts) file containing `declare module 'vuetify/lib';`
+    1 | import Vue from "vue";
+  > 2 | import Vuetify from "vuetify/lib";
+      |                     ^
+    3 |
+    4 | Vue.use(Vuetify);
+    5 |
+```
+
 ## References
 
 * [electron-app](https://github.com/bromix/vue-examples/tree/master/electron-app)
