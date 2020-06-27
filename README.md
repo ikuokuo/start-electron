@@ -12,20 +12,6 @@
 
 * [Node.js](https://nodejs.org/en/download/) = Latest LTS Version: 12.18.1
   * `Latest Current Version: 14.4.0` is not recommended at present, since Electron v9 is still using Node.js v12.
-
-```bash
-$ node -v
-v12.18.1
-
-$ npm -v
-6.14.5
-
-$ npm list -g --depth 0
-
-$ npm outdated -g
-$ npm update -g
-```
-
 * [淘宝 NPM 镜像](https://developer.aliyun.com/mirror/NPM)
 
 ## Tutorial

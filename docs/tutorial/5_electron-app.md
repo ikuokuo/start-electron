@@ -34,6 +34,13 @@ $ npm -v
 6.14.5
 ```
 
+<!--
+npm list -g --depth 0
+
+npm outdated -g
+npm update -g
+-->
+
 ### Yarn
 
 GitHub: https://github.com/yarnpkg/yarn
