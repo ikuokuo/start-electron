@@ -10,11 +10,12 @@
 
 ## Environment
 
-* [Node.js](https://nodejs.org/en/download/) = Latest Current Version: 14.4.0
+* [Node.js](https://nodejs.org/en/download/) = Latest LTS Version: 12.18.1
+  * `Latest Current Version: 14.4.0` is not recommended at present, since Electron v9 is still using Node.js v12.
 
 ```bash
 $ node -v
-v14.4.0
+v12.18.1
 
 $ npm -v
 6.14.5
@@ -31,7 +32,10 @@ $ npm update -g
 
 * [Electron Quick Start](docs/tutorial/1_electron-quick-start.md)
 * [Electron Fiddle](docs/tutorial/2_electron-fiddle.md)
+* [Electron Forge](docs/tutorial/3_electron-forge.md)
+* [Electron Vue](docs/tutorial/4_electron-vue.md)
 
 ## References
 
 * [Electron 9.0.0](https://www.electronjs.org/blog/electron-9-0)
+* [Awesome Electron](https://github.com/sindresorhus/awesome-electron)
