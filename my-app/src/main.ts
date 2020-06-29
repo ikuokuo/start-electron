@@ -10,9 +10,11 @@ new Vue({
   router,
   store,
   vuetify,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");
 
 // https://cn.vuejs.org/v2/guide/typescript.html
+// https://class-component.vuejs.org/
 // https://github.com/Microsoft/TypeScript-Vue-Starter
 // https://zhuanlan.zhihu.com/p/60952007
+// https://cloud.tencent.com/developer/article/1552775

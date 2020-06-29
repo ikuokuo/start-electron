@@ -48,6 +48,8 @@
           OS: {{ os.platform }} {{ os.release }} {{ os.arch }}, CPUS:
           {{ os.cpus }}, MEM: {{ ((100 * usedmem) / totalmem).toFixed() }}%
           {{ readableBytes(usedmem, 2, false) }}/{{ readableBytes(totalmem) }}
+          <v-divider class="mx-1" vertical></v-divider>
+          Route: {{ route.name }} {{ route2.path }}
         </v-col>
       </v-row>
     </v-footer>
@@ -57,7 +59,8 @@
 <script lang="ts">
 import os from "os";
 
-import Vue from "vue";
+import { Vue } from "vue-property-decorator";
+import { Route } from "vue-router";
 import Vuetify from "vuetify/lib";
 
 import HelloWorld from "./components/HelloWorld.vue";
@@ -72,23 +75,33 @@ export default Vue.extend({
     HelloWorld,
   },
 
-  data: () => ({
-    os: {
-      arch: os.arch(),
-      cpus: os.cpus().length,
-      platform: os.platform(),
-      release: os.release(),
-    },
-    versions: {
-      electron: window.versions.electron,
-      chrome: window.versions.chrome,
-      node: window.versions.node,
-      vue: Vue.version,
-      vuetify: Vuetify.version,
-    },
-  }),
+  data: function () {
+    let route = this.$route as Route;
+    return {
+      os: {
+        arch: os.arch(),
+        cpus: os.cpus().length,
+        platform: os.platform(),
+        release: os.release(),
+      },
+      route: {
+        name: route.name,
+        path: route.path,
+      },
+      versions: {
+        electron: window.versions.electron,
+        chrome: window.versions.chrome,
+        node: window.versions.node,
+        vue: Vue.version,
+        vuetify: Vuetify.version,
+      },
+    };
+  },
 
   computed: {
+    route2() {
+      return { name: this.$route.name, path: this.$route.path };
+    },
     freemem(): number {
       return os.freemem();
     },
