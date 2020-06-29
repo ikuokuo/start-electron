@@ -1,24 +1,38 @@
-# my-app
+# My App
 
 ## Project setup
-```
+
+```bash
 yarn install
 ```
 
 ### Compiles and hot-reloads for development
-```
-yarn serve
+
+```bash
+# yarn serve
+yarn electron:serve
 ```
 
 ### Compiles and minifies for production
-```
-yarn build
+
+```bash
+# yarn build
+yarn electron:build
 ```
 
 ### Lints and fixes files
-```
+
+```bash
 yarn lint
 ```
 
+### Upgrade all packages
+
+```bash
+npx yarn-upgrade-all
+yarn add @types/node@12 --dev
+```
+
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).

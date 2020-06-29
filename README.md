@@ -19,6 +19,10 @@
 * [Electron App with Vue.js, Vuetify](docs/tutorial/5_electron-app.md) ✨
   * [Electron: 如何以 Vue.js, Vuetify 开始应用](https://mp.weixin.qq.com/s/rFk-dgufsxeyhTe3vk-aLQ)
 
+### Electron App with Vue.js, Vuetify ✨
+
+![](docs/my-app.png)
+
 ## References
 
 * [Electron Documentation](https://www.electronjs.org/docs)
