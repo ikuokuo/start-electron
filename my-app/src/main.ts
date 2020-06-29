@@ -12,3 +12,7 @@ new Vue({
   vuetify,
   render: h => h(App)
 }).$mount("#app");
+
+// https://cn.vuejs.org/v2/guide/typescript.html
+// https://github.com/Microsoft/TypeScript-Vue-Starter
+// https://zhuanlan.zhihu.com/p/60952007
