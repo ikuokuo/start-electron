@@ -9,12 +9,12 @@ module.exports = {
       // externals: ['my-native-dep'],
       // If you are using Yarn Workspaces, you may have multiple node_modules folders
       // List them all here so that VCP Electron Builder can find them
-      nodeModulesPath: ['../../node_modules', './node_modules'],
+      nodeModulesPath: ["../../node_modules", "./node_modules"],
       // Node integration
       nodeIntegration: true,
       // Preload files
-      preload: 'src/preload.js',
-    }
+      preload: "src/preload.js",
+    },
   },
-  transpileDependencies: ["vuetify"]
+  transpileDependencies: ["vuetify"],
 };

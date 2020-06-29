@@ -23,7 +23,11 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank" text>
+      <v-btn
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+        text
+      >
         <span class="mr-2">Latest Release</span>
         <v-icon>mdi-open-in-new</v-icon>
       </v-btn>
@@ -36,16 +40,14 @@
     <v-footer app>
       <v-row justify="center" no-gutters>
         <v-col class="text-center" cols="12">
-          Vue {{ versions.vue }},
-          Vuetify {{ versions.vuetify }},
-          Electron {{ versions.electron }},
-          Chromium {{ versions.chrome }},
-          Node.js {{ versions.node }}
+          Vue {{ versions.vue }}, Vuetify {{ versions.vuetify }}, Electron
+          {{ versions.electron }}, Chromium {{ versions.chrome }}, Node.js
+          {{ versions.node }}
         </v-col>
         <v-col class="text-center" cols="12">
-          OS: {{ os.platform }} {{ os.release }} {{ os.arch }},
-          CPUS: {{ os.cpus }},
-          MEM: {{ (100 * usedmem / totalmem).toFixed() }}% {{ readableBytes(usedmem, 2, false) }}/{{ readableBytes(totalmem) }}
+          OS: {{ os.platform }} {{ os.release }} {{ os.arch }}, CPUS:
+          {{ os.cpus }}, MEM: {{ ((100 * usedmem) / totalmem).toFixed() }}%
+          {{ readableBytes(usedmem, 2, false) }}/{{ readableBytes(totalmem) }}
         </v-col>
       </v-row>
     </v-footer>
@@ -53,11 +55,12 @@
 </template>
 
 <script lang="ts">
+import os from "os";
+
 import Vue from "vue";
 import Vuetify from "vuetify/lib";
-import HelloWorld from "./components/HelloWorld.vue";
 
-import os from "os";
+import HelloWorld from "./components/HelloWorld.vue";
 
 // eslint-disable-next-line
 declare var window: any;
@@ -66,7 +69,7 @@ export default Vue.extend({
   name: "App",
 
   components: {
-    HelloWorld
+    HelloWorld,
   },
 
   data: () => ({
@@ -74,15 +77,15 @@ export default Vue.extend({
       arch: os.arch(),
       cpus: os.cpus().length,
       platform: os.platform(),
-      release: os.release()
+      release: os.release(),
     },
     versions: {
       electron: window.versions.electron,
       chrome: window.versions.chrome,
       node: window.versions.node,
       vue: Vue.version,
-      vuetify: Vuetify.version
-    }
+      vuetify: Vuetify.version,
+    },
   }),
 
   computed: {
@@ -94,7 +97,7 @@ export default Vue.extend({
     },
     usedmem(): number {
       return this.totalmem - this.freemem;
-    }
+    },
   },
 
   methods: {
@@ -113,7 +116,7 @@ export default Vue.extend({
       } else {
         throw new Error(`unit expected boolean | string, got '${unit}'`);
       }
-    }
-  }
+    },
+  },
 });
 </script>
