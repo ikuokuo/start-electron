@@ -2,7 +2,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "vetur.format.options.tabSize": 2,
   "vetur.format.options.useTabs": false,
   "vetur.validation.template": true

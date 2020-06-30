@@ -49,7 +49,7 @@
           {{ os.cpus }}, MEM: {{ ((100 * usedmem) / totalmem).toFixed() }}%
           {{ readableBytes(usedmem, 2, false) }}/{{ readableBytes(totalmem) }}
           <v-divider class="mx-1" vertical></v-divider>
-          Route: {{ route.name }} {{ route2.path }}
+          Route: {{ route.name }} {{ route.path }}
         </v-col>
       </v-row>
     </v-footer>
@@ -58,78 +58,72 @@
 
 <script lang="ts">
 import os from "os";
+import process from "process";
 
-import { Vue } from "vue-property-decorator";
+import { Vue, Component } from "vue-property-decorator";
 import { Route } from "vue-router";
 import Vuetify from "vuetify/lib";
 
+// Property '$api' does not exist on type 'App'. Vetur(2339)
+import {} from "./types/api";
+
 import HelloWorld from "./components/HelloWorld.vue";
 
-// eslint-disable-next-line
-declare var window: any;
+@Component({
+  components: { HelloWorld },
+})
+export default class App extends Vue {
+  os = {
+    arch: os.arch(),
+    cpus: os.cpus().length,
+    platform: os.platform(),
+    release: os.release(),
+  };
 
-export default Vue.extend({
-  name: "App",
+  versions = {
+    // electron: this.$window.versions.electron,
+    // chrome: this.$window.versions.chrome,
+    // node: this.$window.versions.node,
+    electron: process.versions.electron,
+    chrome: process.versions.chrome,
+    node: process.versions.node,
+    vue: Vue.version,
+    vuetify: Vuetify.version,
+    api: { one: this.$api.one },
+  };
 
-  components: {
-    HelloWorld,
-  },
+  get route(): { name: string; path: string } {
+    const route = this.$route as Route;
+    return { name: route.name as string, path: route.path };
+  }
 
-  data: function () {
-    let route = this.$route as Route;
-    return {
-      os: {
-        arch: os.arch(),
-        cpus: os.cpus().length,
-        platform: os.platform(),
-        release: os.release(),
-      },
-      route: {
-        name: route.name,
-        path: route.path,
-      },
-      versions: {
-        electron: window.versions.electron,
-        chrome: window.versions.chrome,
-        node: window.versions.node,
-        vue: Vue.version,
-        vuetify: Vuetify.version,
-      },
-    };
-  },
+  get freemem(): number {
+    return os.freemem();
+  }
 
-  computed: {
-    route2() {
-      return { name: this.$route.name, path: this.$route.path };
-    },
-    freemem(): number {
-      return os.freemem();
-    },
-    totalmem(): number {
-      return os.totalmem();
-    },
-    usedmem(): number {
-      return this.totalmem - this.freemem;
-    },
-  },
+  get totalmem(): number {
+    return os.totalmem();
+  }
 
-  methods: {
-    readableBytes(
-      bytes: number,
-      digits = 2,
-      unit: boolean | string = true
-    ): string {
-      const i = Math.floor(Math.log(bytes) / Math.log(1024));
-      const size = (bytes / Math.pow(1024, i)).toFixed(digits);
-      if (typeof unit === "boolean") {
-        const units = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-        return unit ? `${size} ${units[i]}` : size;
-      } else if (typeof unit === "string") {
-        return `${size}${unit}`;
-      } else {
-        throw new Error(`unit expected boolean | string, got '${unit}'`);
-      }
-    },
-  },
-});
+  get usedmem(): number {
+    return this.totalmem - this.freemem;
+  }
+
+  readableBytes(
+    bytes: number,
+    digits = 2,
+    unit: boolean | string = true
+  ): string {
+    const i = Math.floor(Math.log(bytes) / Math.log(1024));
+    const size = (bytes / Math.pow(1024, i)).toFixed(digits);
+    if (typeof unit === "boolean") {
+      const units = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+      return unit ? `${size} ${units[i]}` : size;
+    } else if (typeof unit === "string") {
+      return `${size}${unit}`;
+    } else {
+      throw new Error(`unit expected boolean | string, got '${unit}'`);
+    }
+  }
+}
 </script>

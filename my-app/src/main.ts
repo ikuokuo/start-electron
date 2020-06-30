@@ -4,6 +4,10 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 
+import { ApiPlugin } from "./plugins/api";
+Vue.use(ApiPlugin, { window: window });
+// Vue.prototype.$window = window;
+
 Vue.config.productionTip = false;
 
 new Vue({
