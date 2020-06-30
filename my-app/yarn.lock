@@ -3498,6 +3498,15 @@ electron-builder@^22.2.0:
     update-notifier "^4.1.0"
     yargs "^15.3.1"
 
+electron-devtools-installer@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npm.taobao.org/electron-devtools-installer/download/electron-devtools-installer-3.1.0.tgz#c7800d36ab8438b51d2e03345860f817ecb5797f"
+  integrity sha1-x4ANNquEOLUdLgM0WGD4F+y1eX8=
+  dependencies:
+    rimraf "^3.0.2"
+    semver "^7.2.1"
+    unzip-crx "^0.2.0"
+
 electron-publish@22.7.0:
   version "22.7.0"
   resolved "https://registry.npm.taobao.org/electron-publish/download/electron-publish-22.7.0.tgz#d92ba7c4007c9ac1dd070593e48028184fb2dc19"
