@@ -64,7 +64,7 @@ import "./api";
 
 import { Vue, Component } from "vue-property-decorator";
 import { Route } from "vue-router";
-import Vuetify from "vuetify/lib";
+import Vuetify from "vuetify";
 
 import HelloWorld from "./components/HelloWorld.vue";
 
