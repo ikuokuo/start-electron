@@ -57,15 +57,14 @@
 </template>
 
 <script lang="ts">
+import "electron";
 import os from "os";
 import process from "process";
+import "./api";
 
 import { Vue, Component } from "vue-property-decorator";
 import { Route } from "vue-router";
 import Vuetify from "vuetify/lib";
-
-// Property '$api' does not exist on type 'App'. Vetur(2339)
-import {} from "./types/api";
 
 import HelloWorld from "./components/HelloWorld.vue";
 
@@ -81,15 +80,19 @@ export default class App extends Vue {
   };
 
   versions = {
-    // electron: this.$window.versions.electron,
-    // chrome: this.$window.versions.chrome,
-    // node: this.$window.versions.node,
     electron: process.versions.electron,
     chrome: process.versions.chrome,
     node: process.versions.node,
     vue: Vue.version,
     vuetify: Vuetify.version,
+
+    // `this.$api` from plugin
     api: { one: this.$api.one },
+
+    // `window.versions` from preload
+    electron2: this.$window.versions.electron,
+    chrome2: this.$window.versions.chrome,
+    node2: this.$window.versions.node,
   };
 
   get route(): { name: string; path: string } {

@@ -1,5 +1,5 @@
 import _Vue from "vue";
-import Api from "@/api/api";
+import Api from "@/api";
 
 // export type PluginFunction<T> = (Vue: typeof _Vue, options?: T) => void;
 export function ApiPlugin<ApiPlugOptions>(

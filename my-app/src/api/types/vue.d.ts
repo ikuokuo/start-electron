@@ -1,17 +1,18 @@
+/**
+ * Extends interfaces in Vue.js
+ */
 import Vue from "vue";
+import Api from "../index";
 
 declare module "vue/types/vue" {
   interface Vue {
     $api: Api;
+
     // main.ts
     //  Vue.prototype.$window = window;
     $window: any;
     // $window: Window;
   }
-}
-
-export interface Api {
-  [key: string]: any;
 }
 
 // https://vuejs.org/v2/guide/typescript.html#Augmenting-Types-for-Use-with-Plugins
