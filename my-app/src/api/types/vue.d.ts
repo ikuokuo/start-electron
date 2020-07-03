@@ -10,8 +10,7 @@ declare module "vue/types/vue" {
 
     // main.ts
     //  Vue.prototype.$window = window;
-    $window: any;
-    // $window: Window;
+    $window: Window;
   }
 }
 

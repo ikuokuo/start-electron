@@ -1,3 +1,4 @@
+import {} from "./types/dom";
 import {} from "./types/vue";
 
 export default class Api {
