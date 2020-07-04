@@ -1,7 +1,8 @@
 import {} from "./types/dom";
 import {} from "./types/vue";
+import IApi from "./types/api";
 
-export default class Api {
+export default class Api implements IApi {
   one: number;
   two: number;
 
